@@ -1,33 +1,31 @@
+from base64 import b64decode
+import os
 import time
-import json
 
 import boto3
-from botocore.client import Config
 
 import twitter
 
-s3_client = boto3.client('s3', config=Config(signature_version='s3v4'))
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('twitter_followers')
-
-CREDS_BUCKET = 'ranman-application-credentials'
-TWITTER_CREDS = 'message_followers.json'
+kms = boto3.client('kms')
+table = os.getenv('DDB_TABLE')
 
 
-def get_api_credentials(key):
-    return json.loads(s3_client.get_object(
-        Bucket=CREDS_BUCKET,
-        Key=key
-    )['Body'].read())
+def decrypt(var):
+    """Helper function to decrypt our environment variables"""
+    return kms.decrypt(CipherTextBlob=b64decode(var))['Plaintext']
 
+# TODO: enable KMS encryption/decryption
 
-api = twitter.Api(**get_api_credentials(TWITTER_CREDS))
+api = twitter.Api(
+    os.getenv('CONSUMER_KEY'),
+    os.getenv('CONSUMER_SECRET'),
+    os.getenv('ACCESS_TOKEN_KEY'),
+    os.getenv('ACCESS_TOKEN_SECRET')
+)
 
-direct_message = """\
-Hello! Thanks for following me!
-Let me know if I can help you out with anything AWS related.
-You can shoot me a message at randhunt@amazon.com or on twitter.
-"""
+direct_message = os.getenv('MESSAGE')
+
 
 def lambda_handler(event, context):
     followers = set(api.GetFollowerIDs())
