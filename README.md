@@ -1,5 +1,5 @@
 # Launch Stack
-[![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://raw.githubusercontent.com/ranman/automations/master/message_followers/template.yaml)
+[![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
 
 # Building a Twitter Auto Responder using AWS Lambda
 
