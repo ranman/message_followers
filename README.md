@@ -5,13 +5,29 @@
 
 One of the best ways for me to engage with customers is through twitter. I can answer a lot of trivial questions in DM without having to create a support ticket or involving account managers. The problem is that most people don't know that they can DM me. Having something that shoots out a DM with some basic info and my email address when I get a new twitter follower has been surprisingly powerful for engaging new AWS users. Previously I used a service called crowdfire to do this and it worked really well! I recommend them. I realized however, that I could write essentially the same service and run it for microcents a month... So, that's what I did. Here's how you can set this up on your own!
 
-## Setting up AWS Lambda
-
-### Run the template.yaml
-
 ## Setting up a Twitter App
+1. First we need to create a new twitter app by navigating to: [https://apps.twitter.com/](https://apps.twitter.com/)
 
-### Fill out this section
+2. Next we will create a new twitter application
+![click create new app](imgs/1_create.png)
+
+3. Now we'll fill out some info to create that application
+![fill out info for new app](imgs/2_create_details.png)
+
+4. Next we'll generate some additional credentials for accessing our application as ourselves:
+![create access tokens](imgs/3_credentials.png)
+
+5. Then we'll save all this info somewhere safe!
+![access tokens](imgs/4_access_token.png)
+
+6. Finally we'll update some of our application permissions so we can send direct messages:
+![permissions](imgs/5_permissions.png)
+
+## Setting up AWS Lambda
+To setup the lambda function we can either use the launch stack button or we can simply upload this template.yaml in the cloudformation console file and have it set everything up for us!
+
+### Run the template.yaml in cloudformation
+
 
 ## Further Work
 Obviously there are issues around rate limiting to solve and I can think of a few ways to expand on those:
