@@ -8,7 +8,7 @@ import twitter
 
 dynamodb = boto3.resource('dynamodb')
 kms = boto3.client('kms')
-table = os.getenv('DDB_TABLE')
+table = dynamodb.Table(os.getenv('DDB_TABLE'))
 
 
 def decrypt(var):
@@ -29,7 +29,7 @@ direct_message = os.getenv('MESSAGE')
 
 def lambda_handler(event, context):
     followers = set(api.GetFollowerIDs())
-    ddb_followers = table.scan(ProjectionExpression="follower")["Items"]
+    ddb_followers = table.scan(ProjectionExpression="follower")['Items']
     old_followers = set([int(x['follower']) for x in ddb_followers])
     timestamp = int(time.time())
 
