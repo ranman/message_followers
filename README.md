@@ -1,5 +1,22 @@
-# Launch Stack
-[![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+# TL;DR How do I 🚀launch🚀 this stack? Click one of these!
+Region | Button
+------------ | -------------
+us-east-1 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+us-east-2 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+us-west-1 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+us-west-2 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+ap-northeast-2 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+ap-southeast-1 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+ap-southeast-2 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+ap-northeast-1 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+eu-central-1 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+eu-west-1 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+eu-west-2 | [![launch stack button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#/stacks/new?stackName=TwitterAutoResponder&templateURL=https://s3.amazonaws.com/randhunt-code/template.yaml)
+
+# What does this do?
+### This app will allow you to write a simple auto response for your new followers!
+![example of app](imgs/example.png)
+
 
 # Building a Twitter Auto Responder using AWS Lambda
 
