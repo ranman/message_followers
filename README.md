@@ -56,3 +56,7 @@ A few other opportunities that I'd love to pursue are making this it's own servi
 On the DynamoDB side the initial follower load can take some time unless you initially scale up for a large number of writes. There's also the storage issue -- currently we index on follower_id but we would need to switch to user_id or have a table for each user. That doesn't scale as well and we might want to pursue an RDS solution instead so we can have a follower_user table. Other than that the entire service would scale easily to multiple users.
 
 Longterm, I want to incorporate the FAQ for every AWS service into an ELK cluster and then use something like amazon lex to communicate intelligently with people asking straightforward questions.
+
+
+## I want to build this myself:
+Run `./build.sh message_followers.zip message_followers.py load_followers.py cfnresponse.py` to create the lambda package.
