@@ -129,3 +129,11 @@ Resources:
         -
           Arn: !GetAtt MessageFollowers.Arn
           Id: MessageFollowers
+
+  PermissionForEventsToInvokeLambda:
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      FunctionName: !GetAtt MessageFollowers.Arn
+      Action: "lambda:InvokeFunction"
+      Principal: "events.amazonaws.com"
+      SourceArn: !GetAtt MessageFollowersEveryFiveMinutes.Arn

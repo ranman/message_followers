@@ -5,4 +5,4 @@ for REGION in "${REGIONLIST[@]}"; do
     #aws s3 rb --force "s3://randhunt-code-${REGION}" --region "${REGION}"
     #aws s3 mb "s3://randhunt-code-${REGION}" --region "${REGION}"
 done
-#aws s3 cp "template.yaml" "s3://randhunt-code/" --acl "public-read"
+aws s3 cp "template.yaml" "s3://randhunt-code/" --acl "public-read"
