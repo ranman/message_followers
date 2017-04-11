@@ -8,6 +8,7 @@ import twitter
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table(os.getenv('DDB_TABLE'))
+read_units = int(os.getenv('DDB_READ_UNITS'))
 
 api = twitter.Api(
     os.getenv('CONSUMER_KEY'),
@@ -32,6 +33,12 @@ def lambda_handler(event, context):
                 )
         resp_data = {'followers_loaded': num_followers, 'elapsed': int(time.time()) - timestamp}
         cfnresponse.send(event, context, cfnresponse.SUCCESS, resp_data)
+        # When we're done lets lower the write capacity units to a reasonable level
+        table.update(
+            ProvisionedThroughput={
+                "ReadCapacityUnits": read_units,
+                "WriteCapacityUnits": 5
+            })
     except Exception as ex:
         print ex
         cfnresponse.send(event, context, cfnresponse.FAILED, {'error': str(ex)})

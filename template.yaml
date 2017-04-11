@@ -17,6 +17,18 @@ Parameters:
   Message:
     Type: String
     Description: The text you want to send to your new followers
+  ReadCapacityUnits:
+    Type: Number
+    Default: 5
+    MaxValue: 1000
+    MinValue: 5
+    Description: Set this to the current number of followers divided by 300 or you can leave the default and your function will execute more slowly.
+  WriteCapacityUnits:
+    Type: Number
+    Default: 25
+    MaxValue: 1000
+    MinValue: 5
+    Description: Set this to the current number of followers divided by 300. It will be lowered after all of your followers are lowered.
 
 Resources:
   TwitterFollowers:
@@ -31,8 +43,8 @@ Resources:
           AttributeName: follower
           KeyType: HASH
       ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
+        ReadCapacityUnits: !Ref ReadCapacityUnits
+        WriteCapacityUnits: !Ref WriteCapacityUnits
 
   MessageFollowersRole:
     Type: AWS::IAM::Role
@@ -66,6 +78,8 @@ Resources:
                   - dynamodb:Scan
                   - dynamodb:BatchWriteItem
                   - dynamodb:BatchGetItem
+                  - dynamodb:BatchGetItem
+                  - dynamodb:UpdateTable
                 Resource: !Sub arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${TwitterFollowers}
 
   LoadFollowers:
@@ -90,6 +104,7 @@ Resources:
           ACCESS_TOKEN_KEY: !Ref AccessTokenKey
           ACCESS_TOKEN_SECRET: !Ref AccessTokenSecret
           DDB_TABLE: !Ref TwitterFollowers
+          DDB_READ_UNITS: !Ref ReadCapacityUnits
 
   LoadData:
     Type: Custom::LoadData
@@ -131,9 +146,9 @@ Resources:
           Id: MessageFollowers
 
   PermissionForEventsToInvokeLambda:
-    Type: "AWS::Lambda::Permission"
+    Type: AWS::Lambda::Permission
     Properties:
       FunctionName: !GetAtt MessageFollowers.Arn
-      Action: "lambda:InvokeFunction"
-      Principal: "events.amazonaws.com"
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
       SourceArn: !GetAtt MessageFollowersEveryFiveMinutes.Arn

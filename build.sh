@@ -12,7 +12,7 @@ fi
 echo "activating virtualenv..."
 source venv/bin/activate
 echo "installing requirements..."
-pip install -t . -r ../requirements.txt > /dev/null
+pip install -t . -r ../requirements.txt --upgrade > /dev/null
 echo "zipping file"
 zip -9 -r ../$1 . -x venv/\* > /dev/null
 deactivate
