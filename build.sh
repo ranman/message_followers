@@ -17,4 +17,4 @@ echo "zipping file"
 zip -9 -r ../$1 . -x venv/\* > /dev/null
 deactivate
 cd ..
-zip -9 $1 ${@:2}
+zip -9 -r $1 ${@:2}
